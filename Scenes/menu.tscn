@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://crvpeo65aaabg"]
+
+[ext_resource type="Script" uid="uid://ctxcuvicmp74x" path="res://Scripts/menu.gd" id="1_158mb"]
+[ext_resource type="Texture2D" uid="uid://cft3opcwk535f" path="res://Assets/Textures/Space.tga_.jpg" id="2_wwsa2"]
+[ext_resource type="PackedScene" uid="uid://oiilk3q78wt6" path="res://Scenes/main.tscn" id="5_wwsa2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_158mb"]
+texture = ExtResource("2_wwsa2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsrd8"]
+bg_color = Color(0.8, 0.247059, 0.792157, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 20
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.243137)
+shadow_size = 14
+shadow_offset = Vector2(0, 8.47)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_158mb")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_158mb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -107.5
+offset_right = 164.0
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_jsrd8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jsrd8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jsrd8")
+text = "START GAME"
+
+[node name="Main" parent="." instance=ExtResource("5_wwsa2")]
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]

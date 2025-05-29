@@ -1,0 +1,127 @@
+[gd_scene load_steps=18 format=3 uid="uid://ue0lson34hfs"]
+
+[ext_resource type="PackedScene" uid="uid://b63cxj8wy820k" path="res://Scenes/HouseAndPropsPack/Scenes/Houses/house_2.tscn" id="1_4dpyx"]
+[ext_resource type="PackedScene" uid="uid://c71otjddg3ya6" path="res://Scenes/player.tscn" id="2_3mqfk"]
+[ext_resource type="PackedScene" uid="uid://dbabhtfuu2jb0" path="res://Scenes/cards.tscn" id="2_iixi8"]
+[ext_resource type="PackedScene" uid="uid://bveks76f44p66" path="res://Scenes/HouseAndPropsPack/Scenes/Props/props_box_1.tscn" id="5_xgxfi"]
+[ext_resource type="PackedScene" uid="uid://dr6j8kgxj54f1" path="res://Scenes/panela.tscn" id="6_xgxfi"]
+[ext_resource type="PackedScene" uid="uid://8fyickq6uhc1" path="res://Scenes/Item.tscn" id="7_5f3p6"]
+[ext_resource type="PackedScene" uid="uid://d125jy18ykvdo" path="res://Scenes/HouseAndPropsPack/Scenes/Props/props_table_1.tscn" id="7_jv26f"]
+[ext_resource type="PackedScene" uid="uid://ck4qs7puxcxnq" path="res://Scenes/cat.tscn" id="8_jv26f"]
+[ext_resource type="Texture2D" uid="uid://cft3opcwk535f" path="res://Assets/Textures/Space.tga_.jpg" id="9_rb0md"]
+[ext_resource type="PackedScene" uid="uid://dl1y0oi7clkme" path="res://Scenes/phase_loader_area.tscn" id="10_u5ghp"]
+[ext_resource type="Texture2D" uid="uid://tusasp4qbaw1" path="res://Assets/Textures/panorama_image.png" id="11_hwvp3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5ghp"]
+albedo_texture = ExtResource("9_rb0md")
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwvp3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_afv7b"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_afv7b"]
+panorama = ExtResource("11_hwvp3")
+
+[sub_resource type="Sky" id="Sky_ynf5e"]
+sky_material = SubResource("PanoramaSkyMaterial_afv7b")
+
+[sub_resource type="Environment" id="Environment_7r2dd"]
+background_mode = 2
+sky = SubResource("Sky_ynf5e")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level1" type="Node3D"]
+
+[node name="House_2" parent="." instance=ExtResource("1_4dpyx")]
+
+[node name="Cards" parent="." instance=ExtResource("2_iixi8")]
+
+[node name="Player" parent="." instance=ExtResource("2_3mqfk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.88309, 3, -0.0917606)
+cards_ui_path = NodePath("../Cards")
+
+[node name="Box" type="Node" parent="."]
+
+[node name="Props_Box_1_s" parent="Box" instance=ExtResource("5_xgxfi")]
+transform = Transform3D(0.992128, 0, -0.125229, 0, 1, 0, 0.125229, 0, 0.992128, -0.997037, 2.50432, -1.09778)
+
+[node name="Props_Box_2" parent="Box" instance=ExtResource("5_xgxfi")]
+transform = Transform3D(0.997955, 0, 0.0639227, 0, 1, 0, -0.0639227, 0, 0.997955, -1.09978, 2.50432, 1.40653)
+
+[node name="Props_Box_3" parent="Box" instance=ExtResource("5_xgxfi")]
+transform = Transform3D(0.992878, 0, -0.119132, 0, 1, 0, 0.119132, 0, 0.992878, -1.1113, 2.50432, 0.154611)
+
+[node name="Props_Box_4_s" parent="Box" instance=ExtResource("5_xgxfi")]
+transform = Transform3D(0.992128, 0, -0.125229, 0, 1, 0, 0.125229, 0, 0.992128, 0.0510024, 2.50432, -1.09778)
+
+[node name="Props_Box_5" parent="Box" instance=ExtResource("5_xgxfi")]
+transform = Transform3D(0.997955, 0, 0.0639227, 0, 1, 0, -0.0639227, 0, 0.997955, -0.0517437, 2.50432, 1.40653)
+
+[node name="Props_Box_6" parent="Box" instance=ExtResource("5_xgxfi")]
+transform = Transform3D(0.992878, 0, -0.119132, 0, 1, 0, 0.119132, 0, 0.992878, -0.0632634, 2.50432, 0.154611)
+
+[node name="Props_Box_7_s" parent="Box" instance=ExtResource("5_xgxfi")]
+transform = Transform3D(0.992128, 0, -0.125229, 0, 1, 0, 0.125229, 0, 0.992128, 0.0510024, 3.52227, -1.09778)
+
+[node name="Props_Box_8" parent="Box" instance=ExtResource("5_xgxfi")]
+transform = Transform3D(0.997955, 0, 0.0639227, 0, 1, 0, -0.0639227, 0, 0.997955, -0.0517437, 3.52227, 1.40653)
+
+[node name="Props_Box_9" parent="Box" instance=ExtResource("5_xgxfi")]
+transform = Transform3D(0.992878, 0, -0.119132, 0, 1, 0, 0.119132, 0, 0.992878, -0.0632634, 3.52227, 0.154611)
+
+[node name="Panela" parent="." node_paths=PackedStringArray("targets_to_remove") instance=ExtResource("6_xgxfi")]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, -3.1264, 2.21418, -1.27108)
+targets_to_remove = [NodePath("../Box/Props_Box_1_s"), NodePath("../Box/Props_Box_4_s"), NodePath("../Box/Props_Box_7_s")]
+
+[node name="RigidBody3D" parent="." instance=ExtResource("7_5f3p6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09564, 2.94862, 0.997649)
+
+[node name="mesa" parent="." instance=ExtResource("7_jv26f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98178, 2.35756, 1.18731)
+
+[node name="Cat" parent="." instance=ExtResource("8_jv26f")]
+transform = Transform3D(-1, 1.06542e-08, 8.67711e-08, 0, 0.992546, -0.121869, -8.74228e-08, -0.121869, -0.992546, -3.02285, 2.99848, -1.61349)
+dialog_lines = Array[String](["You didn’t think it would be that easy, did you?", "But don’t worry, I can give you a little help…", "Walking around like this has made me a bit hungry", "If only I had a nice FISH"])
+
+[node name="Void" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Void"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.90874, 3.12304, 3.72877)
+
+[node name="Void" type="MeshInstance3D" parent="Void/StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_u5ghp")
+mesh = SubResource("BoxMesh_hwvp3")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Void/StaticBody3D"]
+shape = SubResource("BoxShape3D_afv7b")
+
+[node name="Void2" type="MeshInstance3D" parent="Void"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.204102, 3.02982, 3.71365)
+material_override = SubResource("StandardMaterial3D_u5ghp")
+mesh = SubResource("BoxMesh_hwvp3")
+skeleton = NodePath("../..")
+
+[node name="Void3" type="MeshInstance3D" parent="Void"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.12636, 3.02982, -3.68228)
+material_override = SubResource("StandardMaterial3D_u5ghp")
+mesh = SubResource("BoxMesh_hwvp3")
+skeleton = NodePath("../..")
+
+[node name="phase_loader_area" parent="Void" instance=ExtResource("10_u5ghp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01074, 2.52979, 2.22139)
+level_id = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7r2dd")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030434, 5.35737, 0.0688555)
+light_color = Color(0.984517, 0.484448, 0.534518, 1)
+light_energy = 1.162
+shadow_enabled = true
+shadow_normal_bias = 0.0
+shadow_blur = 5.04
+omni_range = 360.375
+omni_attenuation = 0.05

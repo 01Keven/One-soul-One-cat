@@ -1,0 +1,338 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbabhtfuu2jb0"]
+
+[ext_resource type="StyleBox" uid="uid://rfh4q8x1p8k4" path="res://Assets/Style/button.tres" id="1_4ll3t"]
+[ext_resource type="Texture2D" uid="uid://cjpb7ui1cuoev" path="res://Assets/Icons/jump.png" id="2_eomap"]
+[ext_resource type="FontFile" uid="uid://2uopl3dsredj" path="res://Assets/fonts/Space Comics.ttf" id="2_fb33y"]
+[ext_resource type="Texture2D" uid="uid://cvnjqp107qvbw" path="res://Assets/Icons/grab.png" id="4_fb33y"]
+[ext_resource type="StyleBox" uid="uid://ss3rv4fkhdx5" path="res://Assets/Style/butto2.tres" id="4_x4nwt"]
+[ext_resource type="Texture2D" uid="uid://n7m4oylrjoff" path="res://Assets/Icons/sprint.png" id="6_1iigk"]
+[ext_resource type="Texture2D" uid="uid://bylsgxi1uk5yd" path="res://Assets/Icons/fire.png" id="7_k3sx0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fb33y"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eomap"]
+bg_color = Color(0.903598, 0.903598, 0.903598, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.39, 0.39, 0.39, 0.596078)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0, 0, 0, 0.243137)
+shadow_size = 26
+shadow_offset = Vector2(0, 8.47)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ll3t"]
+bg_color = Color(0.699655, 0.699653, 0.699653, 1)
+border_width_top = 10
+border_color = Color(0.389287, 0.389287, 0.389286, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.243137)
+shadow_size = 14
+shadow_offset = Vector2(0, 8.47)
+
+[node name="Cards" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -533.0
+offset_top = -192.5
+offset_right = 533.0
+offset_bottom = 192.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fb33y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Jump" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = ExtResource("1_4ll3t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eomap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4ll3t")
+theme_override_styles/normal = ExtResource("1_4ll3t")
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/Jump"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 49.0
+offset_right = 76.5
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.305882, 0.988235, 1)
+theme_override_colors/font_shadow_color = Color(0.61, 0.1891, 0.602985, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("2_fb33y")
+theme_override_font_sizes/font_size = 30
+text = "JUMP"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/HBoxContainer/Jump"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -93.0
+offset_right = 85.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.305882, 0.988235, 1)
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("2_fb33y")
+theme_override_font_sizes/font_size = 10
+text = "PRESS SPACE TO JUMP (ONLY ONCE)"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/Jump"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -100.0
+offset_right = 88.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eomap")
+
+[node name="Inventory" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = ExtResource("1_4ll3t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eomap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4ll3t")
+theme_override_styles/normal = ExtResource("4_x4nwt")
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/Inventory"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 49.0
+offset_right = 76.5
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.996078, 0.454902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.772549, 0.32549, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("2_fb33y")
+theme_override_font_sizes/font_size = 30
+text = "GRAB"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/HBoxContainer/Inventory"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.5
+offset_top = -96.0
+offset_right = 83.5
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0.996078, 0.454902, 1)
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("2_fb33y")
+theme_override_font_sizes/font_size = 10
+text = "HOLD E OR LEFT 
+MOUSE BUTTON 
+TO GRAB AN ITEM"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/Inventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -100.0
+offset_right = 88.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fb33y")
+
+[node name="Sprint" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = ExtResource("1_4ll3t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eomap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4ll3t")
+theme_override_styles/normal = ExtResource("1_4ll3t")
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/Sprint"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 49.0
+offset_right = 76.5
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.305882, 0.988235, 1)
+theme_override_colors/font_shadow_color = Color(0.61, 0.1891, 0.602985, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("2_fb33y")
+theme_override_font_sizes/font_size = 30
+text = "SPRINT"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/HBoxContainer/Sprint"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -93.0
+offset_right = 85.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.305882, 0.988235, 1)
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("2_fb33y")
+theme_override_font_sizes/font_size = 10
+text = "PRESS SHIFT TO 
+SPRINT FOR A FEW SECONDS"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/Sprint"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -100.0
+offset_right = 88.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_1iigk")
+
+[node name="Shoot" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = ExtResource("1_4ll3t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eomap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4ll3t")
+theme_override_styles/normal = ExtResource("4_x4nwt")
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/Shoot"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 49.0
+offset_right = 76.5
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.996078, 0.454902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.772549, 0.32549, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("2_fb33y")
+theme_override_font_sizes/font_size = 30
+text = "FIRE"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/HBoxContainer/Shoot"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -93.0
+offset_right = 85.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0.996078, 0.454902, 1)
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("2_fb33y")
+theme_override_font_sizes/font_size = 10
+text = "ONLY ONE BULLET AVAILABLE!"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/Shoot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -100.0
+offset_right = 88.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_k3sx0")

@@ -1,0 +1,153 @@
+[gd_scene load_steps=21 format=3 uid="uid://cttjyknfrtwm3"]
+
+[ext_resource type="PackedScene" uid="uid://dq06j6ncsytpr" path="res://Scenes/HouseAndPropsPack/Scenes/Houses/house_4.tscn" id="1_oylv5"]
+[ext_resource type="PackedScene" uid="uid://dbabhtfuu2jb0" path="res://Scenes/cards.tscn" id="2_w2ac1"]
+[ext_resource type="PackedScene" uid="uid://c71otjddg3ya6" path="res://Scenes/player.tscn" id="3_ovj6s"]
+[ext_resource type="PackedScene" uid="uid://bveks76f44p66" path="res://Scenes/HouseAndPropsPack/Scenes/Props/props_box_1.tscn" id="4_ovj6s"]
+[ext_resource type="PackedScene" uid="uid://8fyickq6uhc1" path="res://Scenes/Item.tscn" id="5_8qsmg"]
+[ext_resource type="Script" uid="uid://b4gcj81j5dnva" path="res://Scripts/BoxSpawn.gd" id="5_fphuk"]
+[ext_resource type="PackedScene" uid="uid://dr6j8kgxj54f1" path="res://Scenes/panela.tscn" id="7_fphuk"]
+[ext_resource type="PackedScene" uid="uid://r3w2kufvllw8" path="res://Scenes/HouseAndPropsPack/Scenes/Props/props_barrel.tscn" id="8_0x4y1"]
+[ext_resource type="PackedScene" uid="uid://dre4k0sjv4dov" path="res://Scenes/HouseAndPropsPack/Scenes/Props/props_posts_4.tscn" id="8_blpqv"]
+[ext_resource type="PackedScene" uid="uid://dcviiko5dcfs5" path="res://Scenes/HouseAndPropsPack/Scenes/Props/props_table_square_1.tscn" id="9_1jlnc"]
+[ext_resource type="Texture2D" uid="uid://cft3opcwk535f" path="res://Assets/Textures/Space.tga_.jpg" id="10_u40f0"]
+[ext_resource type="PackedScene" uid="uid://dl1y0oi7clkme" path="res://Scenes/phase_loader_area.tscn" id="11_0x4y1"]
+[ext_resource type="PackedScene" uid="uid://ck4qs7puxcxnq" path="res://Scenes/cat.tscn" id="13_uqiic"]
+[ext_resource type="Texture2D" uid="uid://tusasp4qbaw1" path="res://Assets/Textures/panorama_image.png" id="14_eopvx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqiic"]
+albedo_texture = ExtResource("10_u40f0")
+
+[sub_resource type="BoxMesh" id="BoxMesh_eopvx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t27xo"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_t27xo"]
+panorama = ExtResource("14_eopvx")
+
+[sub_resource type="Sky" id="Sky_yxf76"]
+sky_material = SubResource("PanoramaSkyMaterial_t27xo")
+
+[sub_resource type="Environment" id="Environment_ia1lp"]
+background_mode = 2
+sky = SubResource("Sky_yxf76")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="level_2" type="Node3D"]
+
+[node name="House_4" parent="." instance=ExtResource("1_oylv5")]
+
+[node name="Cards" parent="." instance=ExtResource("2_w2ac1")]
+
+[node name="Player" parent="." instance=ExtResource("3_ovj6s")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.12413, 1.32795, -2.8799)
+cards_ui_path = NodePath("../Cards")
+
+[node name="Props_Box_1" parent="." groups=["destructible"] instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.992128, 0, -0.125229, 0, 1, 0, 0.125229, 0, 0.992128, 1.49007, 4.74029, 0.466645)
+script = ExtResource("5_fphuk")
+object_scene = ExtResource("5_8qsmg")
+
+[node name="Panela" parent="." node_paths=PackedStringArray("targets_to_remove") instance=ExtResource("7_fphuk")]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 1.51328, 0.255838, 0.536085)
+targets_to_remove = [NodePath("../Box/Props_Box_1_s"), NodePath("../Box/Props_Box_4_s"), NodePath("../Box/Props_Box_7_s"), NodePath("../Box/Props_Box_1_s2")]
+
+[node name="Box" type="Node" parent="."]
+
+[node name="Props_Barrel" parent="Box" instance=ExtResource("8_0x4y1")]
+transform = Transform3D(0.997955, 0, 0.0639227, 0, 1, 0, -0.0639227, 0, 0.997955, 2.17137, 0.69795, -2.89502)
+mass = 30.0
+gravity_scale = 5.0
+
+[node name="Props_Box_1_s" parent="Box" instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.992128, 0, -0.125229, 0, 1, 0, 0.125229, 0, 0.992128, -3.24705, 0.601531, -1.15809)
+
+[node name="Props_Box_1_s2" parent="Box" instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.992128, 0, -0.125229, 0, 1, 0, 0.125229, 0, 0.992128, -3.24705, 1.67395, -1.15809)
+
+[node name="Props_Box_2" parent="Box" instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.997955, 0, 0.0639227, 0, 1, 0, -0.0639227, 0, 0.997955, -1.42921, 0.601531, 1.10367)
+visible = false
+
+[node name="Props_Box_3" parent="Box" instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.992878, 0, -0.119132, 0, 1, 0, 0.119132, 0, 0.992878, -1.44073, 0.601531, -0.148249)
+
+[node name="Props_Box_4_s" parent="Box" instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.992128, 0, -0.125229, 0, 1, 0, 0.125229, 0, 0.992128, -2.19901, 0.601531, -1.15809)
+
+[node name="Props_Box_5" parent="Box" instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.997955, 0, 0.0639227, 0, 1, 0, -0.0639227, 0, 0.997955, -0.381177, 0.601531, 1.10367)
+visible = false
+
+[node name="Props_Box_6" parent="Box" instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.992878, 0, -0.119132, 0, 1, 0, 0.119132, 0, 0.992878, -0.392697, 0.601531, -0.148249)
+
+[node name="Props_Box_7_s" parent="Box" instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.992128, 0, -0.125229, 0, 1, 0, 0.125229, 0, 0.992128, -2.19901, 1.61948, -1.15809)
+
+[node name="Props_Box_8" parent="Box" instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.997955, 0, 0.0639227, 0, 1, 0, -0.0639227, 0, 0.997955, -0.381177, 1.61948, 1.10367)
+visible = false
+
+[node name="Props_Box_9" parent="Box" instance=ExtResource("4_ovj6s")]
+transform = Transform3D(0.992878, 0, -0.119132, 0, 1, 0, 0.119132, 0, 0.992878, -0.392697, 1.61948, -0.148249)
+visible = false
+
+[node name="Props_Posts_4" parent="Box" instance=ExtResource("8_blpqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.640689, 2.19367, 1.11473)
+
+[node name="Props_Table_Square_1" parent="Box" instance=ExtResource("9_1jlnc")]
+transform = Transform3D(0.974967, -0.222348, 0, 0.222348, 0.974967, 0, 0, 0, 1, -2.05947, 1.44695, 0.0274996)
+
+[node name="Void" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Void"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.26463, 1.6573, 3.72877)
+
+[node name="Void" type="MeshInstance3D" parent="Void/StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_uqiic")
+mesh = SubResource("BoxMesh_eopvx")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Void/StaticBody3D"]
+shape = SubResource("BoxShape3D_t27xo")
+
+[node name="Void2" type="MeshInstance3D" parent="Void"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.661735, 3.02982, 3.71365)
+material_override = SubResource("StandardMaterial3D_uqiic")
+mesh = SubResource("BoxMesh_eopvx")
+skeleton = NodePath("../..")
+
+[node name="Void4" type="MeshInstance3D" parent="Void"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.07404, 2.06885, 0.504882)
+material_override = SubResource("StandardMaterial3D_uqiic")
+mesh = SubResource("BoxMesh_eopvx")
+skeleton = NodePath("../..")
+
+[node name="phase_loader_area" parent="Void" instance=ExtResource("11_0x4y1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.97318, 0.643896, 2.34164)
+level_id = 4
+
+[node name="Cat" parent="." instance=ExtResource("13_uqiic")]
+transform = Transform3D(0.681385, 0, 0.731925, 0, 1, 0, -0.731925, 0, 0.681385, 2.76895, 0, 0.177265)
+dialog_lines = Array[String](["There’s a strong smell around here... do you smell it?", "Smells like fish, but there’s nothing in sight.", "I bet it’s coming from somewhere hidden.", "If I were you, I’d take a good look... if it were me, I’d even set it on FIRE."])
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 1.97
+shadow_enabled = true
+sky_mode = 1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27617, 3.95673, -0.393544)
+light_color = Color(0.984517, 0.484448, 0.534518, 1)
+light_energy = 1.162
+shadow_enabled = true
+shadow_normal_bias = 0.0
+shadow_blur = 5.04
+omni_range = 360.375
+omni_attenuation = 0.05
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ia1lp")

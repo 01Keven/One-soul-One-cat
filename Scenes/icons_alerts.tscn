@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://lk2vyjkih330"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vgqql"]
+load_path = "res://.godot/imported/sprint.png-02cc32ab987494206a00875acbd149cf.ctex"
+
+[node name="Icons_Alerts" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="jump_icon" type="TextureProgressBar" parent="."]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 135.0
+offset_bottom = 135.0
+fill_mode = 3
+texture_under = SubResource("CompressedTexture2D_vgqql")
+texture_progress = SubResource("CompressedTexture2D_vgqql")
+tint_under = Color(0.76662, 0.76662, 0.76662, 1)
+tint_progress = Color(0.488179, 1, 0.456277, 1)
+
+[node name="Timer" type="Timer" parent="."]

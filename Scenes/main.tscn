@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=3 uid="uid://oiilk3q78wt6"]
+
+[ext_resource type="PackedScene" uid="uid://dalhev87d0ucr" path="res://Scenes/HouseAndPropsPack/Scenes/Houses/house_1.tscn" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://tusasp4qbaw1" path="res://Assets/Textures/panorama_image.png" id="1_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://c71otjddg3ya6" path="res://Scenes/player.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://dbabhtfuu2jb0" path="res://Scenes/cards.tscn" id="4_kry3j"]
+[ext_resource type="PackedScene" uid="uid://ck4qs7puxcxnq" path="res://Scenes/cat.tscn" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://bveks76f44p66" path="res://Scenes/HouseAndPropsPack/Scenes/Props/props_box_1.tscn" id="6_21xkr"]
+[ext_resource type="Texture2D" uid="uid://cft3opcwk535f" path="res://Assets/Textures/Space.tga_.jpg" id="7_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dl1y0oi7clkme" path="res://Scenes/phase_loader_area.tscn" id="8_344ge"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hptm8"]
+panorama = ExtResource("1_ynf5e")
+
+[sub_resource type="Sky" id="Sky_344ge"]
+sky_material = SubResource("PanoramaSkyMaterial_hptm8")
+
+[sub_resource type="Environment" id="Environment_hptm8"]
+background_mode = 2
+sky = SubResource("Sky_344ge")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_344ge"]
+albedo_texture = ExtResource("7_6bp64")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ynf5e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_344ge"]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hptm8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 1.97
+shadow_enabled = true
+sky_mode = 1
+
+[node name="House_1" parent="." instance=ExtResource("1_jjgbg")]
+
+[node name="Cards" parent="." instance=ExtResource("4_kry3j")]
+
+[node name="Player" parent="." instance=ExtResource("3_8gbba")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.25493, -2.19252)
+walk_speed = 4.0
+cards_ui_path = NodePath("../Cards")
+
+[node name="Cat" parent="." instance=ExtResource("5_kry3j")]
+transform = Transform3D(0.70477, 0, -0.709436, 0, 1, 0, 0.709436, 0, 0.70477, -1.4436, 1.74104, 0.104439)
+dialog_lines = Array[String](["Hey! Come on, get up", "You need to show them that you won’t stay trapped here forever", "Remember, you can only do one thing at a time", "So think carefully (PRESS Q) to decide what you want to do now"])
+
+[node name="Box" type="Node" parent="."]
+
+[node name="Props_Box_1" parent="Box" instance=ExtResource("6_21xkr")]
+transform = Transform3D(0.992128, 0, -0.125229, 0, 1, 0, 0.125229, 0, 0.992128, 1.11752, 1.50323, 0.466645)
+
+[node name="Props_Box_2" parent="Box" instance=ExtResource("6_21xkr")]
+transform = Transform3D(0.997955, 0, 0.0639227, 0, 1, 0, -0.0639227, 0, 0.997955, -0.0939346, 1.50323, 0.466645)
+
+[node name="Props_Box_3" parent="Box" instance=ExtResource("6_21xkr")]
+transform = Transform3D(0.992878, 0, -0.119132, 0, 1, 0, 0.119132, 0, 0.992878, -1.28846, 1.50323, 0.466645)
+
+[node name="Void" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Void"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.17832, 4.77399)
+
+[node name="Void" type="MeshInstance3D" parent="Void/StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_344ge")
+mesh = SubResource("BoxMesh_ynf5e")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Void/StaticBody3D"]
+shape = SubResource("BoxShape3D_344ge")
+
+[node name="Void2" type="MeshInstance3D" parent="Void"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.68632, 2.17832, 1.67489)
+visible = false
+material_override = SubResource("StandardMaterial3D_344ge")
+mesh = SubResource("BoxMesh_ynf5e")
+skeleton = NodePath("../..")
+
+[node name="phase_loader_area" parent="." instance=ExtResource("8_344ge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65952, 3.17002)
+level_id = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030434, 5.35737, 0.0688555)
+light_color = Color(0.984517, 0.484448, 0.534518, 1)
+light_energy = 1.162
+shadow_enabled = true
+shadow_normal_bias = 0.0
+shadow_blur = 5.04
+omni_range = 360.375
+omni_attenuation = 0.05
